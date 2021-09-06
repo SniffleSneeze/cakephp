@@ -23,8 +23,8 @@
                     <td><?= h($user->email) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('PASSWORD') ?></th>
-                    <td><?= h($user->PASSWORD) ?></td>
+                    <th><?= __('password') ?></th>
+                    <td><?= h($user->password) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Id') ?></th>

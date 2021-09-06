@@ -19,7 +19,7 @@ class UsersFixture extends TestFixture
     public $fields = [
         'id' => ['type' => 'integer', 'length' => null, 'unsigned' => false, 'null' => false, 'default' => null, 'comment' => '', 'autoIncrement' => true, 'precision' => null],
         'email' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_0900_ai_ci', 'comment' => '', 'precision' => null],
-        'PASSWORD' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_0900_ai_ci', 'comment' => '', 'precision' => null],
+        'password' => ['type' => 'string', 'length' => 255, 'null' => false, 'default' => null, 'collate' => 'utf8mb4_0900_ai_ci', 'comment' => '', 'precision' => null],
         'created' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => true, 'default' => null, 'comment' => ''],
         'modified' => ['type' => 'datetime', 'length' => null, 'precision' => null, 'null' => true, 'default' => null, 'comment' => ''],
         '_constraints' => [
@@ -42,9 +42,9 @@ class UsersFixture extends TestFixture
             [
                 'id' => 1,
                 'email' => 'Lorem ipsum dolor sit amet',
-                'PASSWORD' => 'Lorem ipsum dolor sit amet',
-                'created' => '2021-09-03 14:17:11',
-                'modified' => '2021-09-03 14:17:11',
+                'password' => 'Lorem ipsum dolor sit amet',
+                'created' => '2021-09-06 15:04:04',
+                'modified' => '2021-09-06 15:04:04',
             ],
         ];
         parent::init();
