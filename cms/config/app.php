@@ -17,7 +17,7 @@ return [
      * Development Mode:
      * true: Errors and warnings shown.
      */
-    'debug' => filter_var(env('DEBUG', false), FILTER_VALIDATE_BOOLEAN),
+    'debug' => filter_var(env('DEBUG', true), FILTER_VALIDATE_BOOLEAN),
 
     /*
      * Configure basic information about the application.
@@ -343,6 +343,11 @@ return [
             'quoteIdentifiers' => false,
             'log' => false,
             //'init' => ['SET GLOBAL innodb_stats_on_metadata = 0'],
+            'datasource' => 'Cake\Database\Driver\Mysql',
+            'host' => 'localhost:3306',
+            'username' => 'alex',
+            'password' => '123Password!',
+            'database' => 'cms_db_test'
         ],
     ],
 
