@@ -15,6 +15,11 @@ declare(strict_types=1);
  */
 namespace App;
 
+use Authorization\AuthorizationService;
+use Authorization\AuthorizationServiceInterface;
+use Authorization\AuthorizationServiceProviderInterface;
+use Authorization\Middleware\AuthorizationMiddleware;
+use Authorization\Policy\OrmResolver;
 use Authentication\AuthenticationService;
 use Authentication\AuthenticationServiceInterface;
 use Authentication\AuthenticationServiceProviderInterface;
@@ -40,7 +45,9 @@ use Cake\Routing\Middleware\RoutingMiddleware;
  * This defines the bootstrapping logic and middleware layers you
  * want to use in your application.
  */
-class Application extends BaseApplication implements AuthenticationServiceProviderInterface
+class Application extends BaseApplication
+    implements AuthenticationServiceProviderInterface, AuthorizationServiceProviderInterface
+
 {
     /**
      * Load all the application configuration and bootstrap logic.
@@ -70,6 +77,8 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         }
 
         // Load more plugins here
+        $this->addPlugin('Authorization');
+
     }
 
     /**
@@ -111,6 +120,9 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             ->add(new RoutingMiddleware($this))
             // add Authentication after RoutingMiddleware
             ->add(new AuthenticationMiddleware($this));
+
+        $middlewareQueue->add(new AuthorizationMiddleware($this));
+
 
         return $middlewareQueue;
     }
@@ -174,4 +186,12 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
 
         return $authenticationService;
     }
+
+    public function getAuthorizationService(ServerRequestInterface $request): AuthorizationServiceInterface
+    {
+        $resolver = new OrmResolver();
+
+        return new AuthorizationService($resolver);
+    }
+
 }
